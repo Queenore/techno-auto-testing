@@ -10,6 +10,7 @@ repositories {
 }
 
 dependencies {
+    testImplementation 'org.hamcrest:hamcrest:2.2'
     testImplementation group: 'org.slf4j', name: 'slf4j-simple', version: '1.6.1'
     testImplementation 'com.codeborne:selenide:6.12.2'
     testImplementation 'org.seleniumhq.selenium:selenium-java:4.8.0'

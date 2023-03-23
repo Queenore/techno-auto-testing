@@ -71,6 +71,8 @@ public class OkAuthTests {
 
     @Test
     public void customTest() {
+        // проблема с тем, что value=="on" присутствует как у включенного, так и у выключенного тоггла
+        // то есть у выключенного элемента атрибут как бы скрывается
         SelenideElement element = $(byXpath("//*[@id=\"invisibleToggler\"]"));
         assertThat(element, IsCheckboxChecked.isCheckboxChecked());
     }
