@@ -107,6 +107,7 @@ public class SecondHw {
     }
 
     @RepeatedTest(5)
+    @Tag("UiPostTest")
     public void hidePictureDislikeTest() throws InterruptedException {
         RecommendationsPage recommendationsPage = homePage.getRecommendationPage();
         recommendationsPage.checkPage();
