@@ -29,4 +29,9 @@ public class HomePage {
         $(byXpath("//*[@aria-label=\"Друзья\"]")).click();
         return new FriendsPage(driver);
     }
+
+    public RecommendationsPage getRecommendationPage() {
+        $(byXpath("//*[@aria-label=\"Рекомендации\"]")).click();
+        return new RecommendationsPage(driver);
+    }
 }

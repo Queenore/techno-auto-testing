@@ -3,6 +3,7 @@ import com.codeborne.selenide.SelenideElement;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -104,4 +105,12 @@ public class SecondHw {
         assertNotEquals($(By.xpath("//div[@class='iblock __warn user-settings_info_block __nomargin']//span"))
                 .shouldBe(Condition.exist).getText(), "Пароль изменен.");
     }
+
+    @RepeatedTest(5)
+    public void hidePictureDislikeTest() throws InterruptedException {
+        RecommendationsPage recommendationsPage = homePage.getRecommendationPage();
+        recommendationsPage.checkPage();
+        recommendationsPage.initPost().checkPostIsVisible().clickDislike().checkPostIsInvisible();
+    }
+
 }
