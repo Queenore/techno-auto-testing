@@ -21,8 +21,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class OkAuthTests {
 
     public final String authPageLink = "https://ok.ru/";
-    private final String LOGIN = "89215787637";
-    private final String PASSWD = "dNb-KD7-7dZ-vR4";
+    private final String LOGIN = "botS23AT25";
+    private final String PASSWD = "autotests2023";
 
     @Test
     public void okAuthMainTest() {
@@ -38,7 +38,7 @@ public class OkAuthTests {
 
     @Test
     public void firstHamcrestTest() {
-        String name = "андрей чешев";
+        String name = "BOTS23at25 bOtS23aT25";
 
         String okName = $$(byXpath("//a[@class='nav-side_i  __with-ic __with-new-icons']"))
                 .get(0)

@@ -18,4 +18,15 @@ public class HomePage {
                 $(byXpath("//a[@class='pf-head_itx_a']")).should(exist).exists() &&
                 $(byXpath("//div[@class='filter filter__nowrap h-mod']")).should(exist).exists();
     }
+
+    public SettingsPage getSettingsPage() {
+        $(byXpath("//*[@aria-controls=\"user-dropdown-menu\"]")).click();
+        $(byXpath("//*[@class=\"u-menu\"]/li[1]//span[@class='u-menu_tx ellip-i lp']")).click();
+        return new SettingsPage(driver);
+    }
+
+    public FriendsPage getFriendsPage() {
+        $(byXpath("//*[@aria-label=\"Друзья\"]")).click();
+        return new FriendsPage(driver);
+    }
 }
