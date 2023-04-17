@@ -1,4 +1,4 @@
 public interface LoadablePage {
 
-    public void checkPage();
+    void checkPage();
 }

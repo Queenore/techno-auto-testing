@@ -1,45 +1,35 @@
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
 
-public class SettingsPage {
+public class SettingsPage extends BasePage {
 
-    private final WebDriver driver;
+    private static final String MAIN_SETTINGS_AREA = "//*[@class='portlet']";
+    private final String PASSWD_PAGE_BUTTON = "//*[@hrefattrs=\"st.cmd=userConfigChangePassword\"]";
+    private final String PUBLICITY_SETTINGS_BUTTON = "//div[contains(@class,'tico null')][contains(text(),'Публичность')]";
 
-    public SettingsPage(WebDriver driver) {
-        this.driver = driver;
+    @Override
+    public void checkPage() {
+        $(By.xpath(MAIN_SETTINGS_AREA)).shouldBe(Condition.visible);
     }
 
     public PasswordPage getPasswordPage() {
-        $(byXpath("//*[@hrefattrs=\"st.cmd=userConfigChangePassword\"]"))
-                .shouldBe(Condition.visible).click();
-        return new PasswordPage(driver);
+        $(byXpath(PASSWD_PAGE_BUTTON)).shouldBe(Condition.visible).click();
+        return new PasswordPage();
     }
+
     public void goToPublicitySettings() {
-        $(byXpath("//div[contains(@class,'tico null')][contains(text(),'Публичность')]"))
-                .shouldBe(Condition.visible).parent().click();
+        $(byXpath(PUBLICITY_SETTINGS_BUTTON)).shouldBe(Condition.visible).parent().click();
     }
 
-    public void clickFirstRadioButton() {
-        getFirstRadioButton().click();
+    public void clickRadioButton(Integer pos) {
+        getRadioButton(pos).click();
     }
 
-    public void clickSecondRadioButton() {
-        getSecondRadioButton().click();
-    }
-
-    public SelenideElement getFirstRadioButton() {
-        return $(byXpath("//tbody/tr[1]/td[2]/input")).shouldBe(Condition.visible);
-    }
-
-    public SelenideElement getSecondRadioButton() {
-        return $(byXpath("//tbody/tr[1]/td[3]/input")).shouldBe(Condition.visible);
-    }
-
-    public SelenideElement getThirdRadioButton() {
-        return $(byXpath("//tbody/tr[1]/td[4]/input")).shouldBe(Condition.visible);
+    public SelenideElement getRadioButton(Integer pos) {
+        return $(byXpath("//tbody/tr[1]/td[" + ++pos + "]/input")).shouldBe(Condition.visible);
     }
 }
