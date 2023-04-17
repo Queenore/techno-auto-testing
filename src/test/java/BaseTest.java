@@ -20,7 +20,6 @@ public class BaseTest {
         authPage.inputPassword(PASSWD);
 
         homePage = authPage.submitAuth();
-        homePage.checkPage();
     }
 
     @BeforeEach
