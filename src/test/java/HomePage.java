@@ -10,12 +10,13 @@ import static com.codeborne.selenide.Selenide.$;
 public class HomePage extends BasePage {
 
     private static final String NOTE = "//a[@class='pf-head_itx_a']";
-    private static final String FEED_FILTER ="//div[@class='filter filter__nowrap h-mod']" ;
+    private static final String FEED_FILTER = "//div[@class='filter filter__nowrap h-mod']";
     private final String INVISIBLE_MODE_TOGGLE = "//*[@id='invisibleToggler']";
     private final String FRIENDS = "//*[@aria-label='Друзья']";
     private final String RECOMMENDATIONS = "//*[@aria-label='Рекомендации']";
     private final String USER_DROPDOWN_MENU = "//*[@aria-controls='user-dropdown-menu']";
-    private final String SETTINGS_BUTTON = "//*[@class='u-menu']/li[1]//span[@class='u-menu_tx ellip-i lp']" ;
+    private final String SETTINGS_BUTTON = "//*[@class='u-menu']/li[1]//span[@class='u-menu_tx ellip-i lp']";
+    private final String OK_PURCHASE_BUTTON = "//div[contains(text(), 'Купить ОКи')]";
 
     @Override
     public void checkPage() {
@@ -45,7 +46,7 @@ public class HomePage extends BasePage {
     }
 
     public OkPurchasePage getOkPurchasePage() {
-        $(By.xpath("//div[contains(text(), 'Купить ОКи')]")).shouldBe(Condition.visible).click();
+        $(By.xpath(OK_PURCHASE_BUTTON)).shouldBe(Condition.visible).click();
         return new OkPurchasePage();
     }
 }
